@@ -3,6 +3,7 @@ package br.com.jdp.array;
 import java.util.HashMap;
 import java.util.Map;
 
+//https://leetcode.com/explore/interview/card/top-interview-questions-easy/92/array/546/
 public class TwoSum {
     public int[] twoSum(int[] nums, int target) {
         Map<Integer, Integer> complements = new HashMap<>(nums.length);
