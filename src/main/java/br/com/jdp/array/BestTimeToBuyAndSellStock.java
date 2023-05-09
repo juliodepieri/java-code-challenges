@@ -3,7 +3,7 @@ package br.com.jdp.array;
 //https://leetcode.com/explore/interview/card/top-interview-questions-easy/92/array/564/
 
 
-public class BestTimeToBuyAndSellStockII {
+public class BestTimeToBuyAndSellStock {
 
     // Solution 1
     // time complexity: O(N)
