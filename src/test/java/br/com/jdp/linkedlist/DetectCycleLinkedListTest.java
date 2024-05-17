@@ -13,7 +13,7 @@ public class DetectCycleLinkedListTest {
         lastNode.next = cycle;
 
         ListNode head = new ListNode(3, cycle);
-        ListNode result = DetectCycleLinkedList.detectCycle(head);
-        assertThat(result).isNotNull();
+        boolean result = DetectCycleLinkedList.detectCycle(head);
+        assertThat(result).isTrue();
     }
 }

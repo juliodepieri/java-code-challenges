@@ -1,9 +1,9 @@
 package br.com.jdp.linkedlist;
 
 // https://leetcode.com/problems/linked-list-cycle-ii
-public class DetectCycleLinkedList {
+public class DetectCycleLinkedList2 {
 
-    public static boolean detectCycle(ListNode head) {
+    public static ListNode detectCycle(ListNode head) {
         ListNode slow = head;
         ListNode fast = head;
 
@@ -13,9 +13,14 @@ public class DetectCycleLinkedList {
             fast = fast.next.next;
 
             if (slow == fast) {
-               return true;
+                slow = head;
+                while (slow != fast) {
+                    slow = slow.next;
+                    fast = fast.next;
+                }
+                return slow;
             }
         }
-        return false;
+        return null;
     }
 }

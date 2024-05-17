@@ -15,7 +15,7 @@ public class ListNode {
 
     @Override
     public String toString() {
-        if (DetectCycleLinkedList.detectCycle(this) != null) {
+        if (DetectCycleLinkedList2.detectCycle(this) != null) {
             return "";
         }
         StringBuilder result = new StringBuilder();
