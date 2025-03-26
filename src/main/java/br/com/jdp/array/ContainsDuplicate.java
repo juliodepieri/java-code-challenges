@@ -7,6 +7,8 @@ import java.util.HashSet;
 
 public class ContainsDuplicate {
 
+    // time complexity: O(N)
+    // space complexity: O(N)
     public boolean containsDuplicate(int[] nums) {
         HashSet<Integer> set = new HashSet<>();
         for (int i = 0; i < nums.length; i++) {
@@ -17,6 +19,8 @@ public class ContainsDuplicate {
         return false;
     }
 
+    // time complexity: O(n log(n))
+    // space complexity: O(1)
     public boolean containsDuplicate2(int[] nums) {
         Arrays.sort(nums); // O(n log(n))
         for (int i = 0; i < nums.length - 1; i++) {
