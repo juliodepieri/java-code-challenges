@@ -1,6 +1,10 @@
 package br.com.jdp.math;
 
 public class CountPrimes {
+    /**
+     * time = O(n log log n)
+     * space = O(n)
+     */
     public static int countPrimes(int n) {
         if (n <= 2) {
             return 0;
@@ -17,6 +21,7 @@ public class CountPrimes {
         // Sieve of Eratosthenes + Only check odd numbers
         for (int p = 3; p * p < n; p += 2) {
             if (isPrime[p]) {
+                // j = multiple of the current prime
                 for (int j = p * p; j < n; j += 2 * p) {
                     isPrime[j] = false;
                 }
