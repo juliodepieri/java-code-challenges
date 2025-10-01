@@ -1,0 +1,82 @@
+package br.com.jdp.array;
+
+// https://leetcode.com/problems/median-of-two-sorted-arrays/description/
+public class MedianOfTwoSortedArrays {
+
+    /**
+     * atime: O(log (m + n))
+     * memory: O(1)
+     */
+    public static double findMedianSortedArrays(int[] nums1, int[] nums2) {
+        // Ensure nums1 is the smaller array
+        if (nums1.length > nums2.length) {
+            return findMedianSortedArrays(nums2, nums1);
+        }
+
+        int m = nums1.length;
+        int n = nums2.length;
+        int totalLeft = (m + n + 1) / 2;
+
+        int left = 0;
+        int right = m;
+
+        while (left <= right) {
+            int i = (left + right) / 2;     // partition in nums1
+            int j = totalLeft - i;          // partition in nums2
+
+            int nums1LeftMax = (i == 0) ? Integer.MIN_VALUE : nums1[i - 1];
+            int nums1RightMin = (i == m) ? Integer.MAX_VALUE : nums1[i];
+
+            int nums2LeftMax = (j == 0) ? Integer.MIN_VALUE : nums2[j - 1];
+            int nums2RightMin = (j == n) ? Integer.MAX_VALUE : nums2[j];
+
+            if (nums1LeftMax <= nums2RightMin && nums2LeftMax <= nums1RightMin) {
+                // Correct partition
+                if ((m + n) % 2 == 1) {
+                    return Math.max(nums1LeftMax, nums2LeftMax);
+                } else {
+                    return (Math.max(nums1LeftMax, nums2LeftMax) +
+                            Math.min(nums1RightMin, nums2RightMin)) / 2.0;
+                }
+            } else if (nums1LeftMax > nums2RightMin) {
+                // too far right, move left
+                right = i - 1;
+            } else {
+                // too far left, move right
+                left = i + 1;
+            }
+        }
+        return 0;
+    }
+
+
+    /**
+     * time O(n)
+     * memory O(n)
+     */
+//    public static double findMedianSortedArrays(int[] nums1, int[] nums2) {
+//        int[] output = new int[nums1.length + nums2.length];
+//        int j=0, k=0;
+//
+//        for (int i = 0; i < output.length; i++) {
+//            int v1 = j >= nums1.length ? Integer.MAX_VALUE : nums1[j];
+//            int v2 = k >= nums2.length ? Integer.MAX_VALUE : nums2[k];
+//
+//            if (v1 < v2) {
+//                output[i] = v1;
+//                j++;
+//            } else {
+//                output[i] = v2;
+//                k++;
+//            }
+//        }
+//
+//        if (output.length % 2 == 0) {
+//            return (output[output.length / 2] + output[output.length / 2 - 1]) / 2.0;
+//        } else {
+//            return output[output.length / 2];
+//        }
+//    }
+
+
+}
