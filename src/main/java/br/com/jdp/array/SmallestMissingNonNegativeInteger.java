@@ -6,7 +6,7 @@ public class SmallestMissingNonNegativeInteger {
 
         // Count residues
         for (int x : nums) {
-s            // This ensures the result mod is always non-negative, even if x was negative
+            // This ensures the result mod is always non-negative, even if x was negative
             int mod = ((x % value) + value) % value;
             count[mod]++;
         }
